@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { Image } from "astro:assets";
+import avatar from "../assets/avatar.png";
 ---
 
 <Layout title="About | P4sTela's Portfolio">
@@ -9,18 +11,24 @@ import Footer from "../components/Footer.astro";
     <main class="pt-20 min-h-screen">
         <section class="py-20 px-4">
             <div class="max-w-3xl mx-auto">
-                <h1 class="text-4xl font-bold text-center mb-12">About</h1>
+                <h1 class="text-4xl font-bold mb-12">About</h1>
                 <div class="prose prose-lg max-w-none">
-                    <p class="text-base-content/80 mb-4">
-                        P4sTelaです。Web開発に情熱を持つ学生です。
-                    </p>
-                    <p class="text-base-content/80 mb-4">
-                        モダンなフロントエンド技術を活用して、ユーザーフレンドリーなWebアプリケーションを作成することを楽しんでいます。
-                        常に新しい技術を学び、より良い開発者になることを目指しています。
-                    </p>
-                    <p class="text-base-content/80 mb-8">
-                        現在は修士課程と並行して、フリーランスのエンジニアとして活動しています。
-                    </p>
+                    <div class="flex">
+                        <div class="flex-none">
+                            <p class="text-base-content/80 mb-4">
+                                P4sTelaです。インターネットに生息しています。
+                            </p>
+                            <p class="text-base-content/80 mb-4">
+                                音楽聴いたり、コードを書いています。たまに映像を作ります。
+                            </p>
+                            <p class="text-base-content/80 mb-8">
+                                現在は修士課程と並行して、フリーランスのエンジニアとして活動しています。
+                            </p>
+                        </div>
+                        <div class="w-36 rounded ml-auto">
+                            <Image src={avatar} alt="Avatar" />
+                        </div>
+                    </div>
 
                     <h2 class="text-2xl font-bold mt-12 mb-6">所属</h2>
 
@@ -62,6 +70,10 @@ import Footer from "../components/Footer.astro";
                                     <li>
                                         <span class="font-semibold"
                                             >バーチャルライブ研究会</span
+                                        >
+                                        <a
+                                            href="https://www.mikuec.com"
+                                            class="link link-info">mikuec.com</a
                                         >
                                         <p
                                             class="text-sm text-base-content/60 mt-1"

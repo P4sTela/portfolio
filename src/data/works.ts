@@ -1,9 +1,11 @@
+import sirefala from "../assets/sirefala.jpeg";
+
 export type Work = {
   id: string;
   title: string;
   description: string;
   longDescription: string;
-  thumbnail: string;
+  thumbnail: ImageMetadata | null;
   techStack: string[];
   links: {
     link?: string;
@@ -18,7 +20,7 @@ export const works: Work[] = [
     description: "シンプルでモダンなポートフォリオサイト",
     longDescription:
       "Astro + React + Tailwind CSS + daisyUIを使用して構築したポートフォリオサイトです。静的サイト生成により高速なパフォーマンスを実現しています。",
-    thumbnail: "/images/works/portfolio.png",
+    thumbnail: null,
     techStack: ["Astro", "React", "TypeScript", "Tailwind CSS", "daisyUI"],
     links: {
       link: "https://p4stela.dev",
@@ -31,7 +33,7 @@ export const works: Work[] = [
     description: "同人サークル「しれふぁら！」の公式Webサイト",
     longDescription:
       "Next.js + React + TypeScript + Supabase + Drizzleを使用して構築したCMS機能付きWebサイトです。ユーザーが簡単にコンテンツを投稿できるように、認証機能と投稿機能を実装しています。",
-    thumbnail: "/images/works/sirefala.jpeg",
+    thumbnail: sirefala,
     techStack: ["Next.js", "React", "TypeScript", "Supabase", "Drizzle"],
     links: {
       link: "https://www.sirefala.com/",

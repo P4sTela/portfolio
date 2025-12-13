@@ -24,16 +24,16 @@ export function WorkModal({ work, onClose }: WorkModalProps) {
 
         <figure className="mb-6">
           <div className="w-full h-64 bg-base-300 rounded-xl flex items-center justify-center overflow-hidden">
-            <img
-              src={work.thumbnail}
-              alt={work.title}
-              className="object-cover w-full h-full"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.style.display = "none";
-                target.parentElement!.innerHTML = `<span class="text-base-content/50">No Image</span>`;
-              }}
-            />
+            {work.thumbnail && (
+              <img
+                src={work.thumbnail.src}
+                alt={work.title}
+                className="object-cover w-full h-full"
+              />
+            )}
+            {!work.thumbnail && (
+              <span className="text-base-content/50">No Image</span>
+            )}
           </div>
         </figure>
 
