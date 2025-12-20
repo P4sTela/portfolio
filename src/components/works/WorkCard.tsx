@@ -11,6 +11,8 @@ export function WorkCard({
   onSelect,
   showTechStack = true,
 }: WorkCardProps) {
+  const thumbnailImage = work.thumbnail ?? work.images[0] ?? null;
+
   return (
     <div
       className="card card-side bg-base-200 shadow-xl cursor-pointer transition-transform hover:scale-[1.02] flex-row"
@@ -25,15 +27,14 @@ export function WorkCard({
       aria-label={`${work.title}の詳細を表示`}
     >
       <figure className="w-40 sm:w-48 md:w-56 shrink-0">
-        <div className="w-full aspect-4/3 bg-base-300 flex items-center justify-center overflow-hidden">
-          {work.thumbnail && (
+        <div className="w-full aspect-video bg-base-300 flex items-center justify-center overflow-hidden">
+          {thumbnailImage ? (
             <img
-              src={work.thumbnail.src}
+              src={thumbnailImage.src}
               alt={work.title}
               className="object-cover object-top w-full h-full"
             />
-          )}
-          {!work.thumbnail && (
+          ) : (
             <span className="text-base-content/50">No Image</span>
           )}
         </div>

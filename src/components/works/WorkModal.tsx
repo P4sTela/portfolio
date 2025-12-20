@@ -1,4 +1,5 @@
 import type { Work } from "../../data/works";
+import { ImageCarousel } from "./ImageCarousel";
 
 interface WorkModalProps {
   work: Work | null;
@@ -7,6 +8,13 @@ interface WorkModalProps {
 
 export function WorkModal({ work, onClose }: WorkModalProps) {
   if (!work) return null;
+
+  const displayImages =
+    work.images.length > 0
+      ? work.images
+      : work.thumbnail
+        ? [work.thumbnail]
+        : [];
 
   return (
     <dialog className="modal modal-open" onClick={onClose}>
@@ -23,18 +31,15 @@ export function WorkModal({ work, onClose }: WorkModalProps) {
         </button>
 
         <figure className="mb-6">
-          <div className="w-full h-64 bg-base-300 rounded-xl flex items-center justify-center overflow-hidden">
-            {work.thumbnail && (
-              <img
-                src={work.thumbnail.src}
-                alt={work.title}
-                className="object-cover w-full h-full"
-              />
-            )}
-            {!work.thumbnail && (
-              <span className="text-base-content/50">No Image</span>
-            )}
-          </div>
+          <ImageCarousel
+            images={displayImages}
+            alt={work.title}
+            autoPlay={true}
+            interval={5000}
+            showIndicators={displayImages.length > 1}
+            showControls={displayImages.length > 1}
+            className="bg-base-300 rounded-xl"
+          />
         </figure>
 
         <h3 className="font-bold text-2xl mb-4">{work.title}</h3>
